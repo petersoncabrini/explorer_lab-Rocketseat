@@ -1,7 +1,6 @@
 /* CC */
 .cc {
   background: no-repeat center/cover;
-  background-image: url("/cc-bg.svg");
   width: 36rem;
   height: 23rem;
   padding: 2rem;
@@ -27,9 +26,8 @@
   font-weight: bold;
   line-height: 2.9rem;
   letter-spacing: 0.04em;
-
   color: #e8e8e8;
-  text-shadow: 0 0.12rem 0.32rem rgb(23 23 23 / 40%);
+  text-shadow: 0 0.20rem 0.50rem rgb(23 23 23 / 100%);
 }
 
 .cc-holder,
@@ -48,7 +46,7 @@
   font-size: 1.4rem;
   font-weight: bold;
   color: #ffffff;
-  text-shadow: 0 0.25rem 0.25rem rgb(22 22 22 / 16%);
+  text-shadow: 0 0.25rem 0.25rem rgb(22 22 22 / 40%);
   text-transform: uppercase;
 }
 
@@ -64,8 +62,21 @@
   position: relative;
 }
 
+.futurama-logo{
+  width: 50px;
+  height: 45px;
+}
+
 .cc-bg {
   position: absolute;
   inset: 0;
   z-index: 0;
+}
+
+.futuramaBg {
+  border-radius: 5%;
+}
+
+.cc .cc-bg #futuramaBg {
+  border-radius: 5%;
 }
