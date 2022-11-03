@@ -4,7 +4,7 @@ import IMask from 'imask';
 const ccBgColor01 = document.querySelector(".cc-bg svg > g g:nth-child(1) path");
 const ccBgColor02 = document.querySelector(".cc-bg svg > g g:nth-child(2) path");
 const ccLogo = document.querySelector(".cc-logo span:nth-child(2) img");
-const background =  document.getElementById("cc");
+const background = document.getElementById("cc");
 
 function setCardType(type) {
 
@@ -20,15 +20,14 @@ function setCardType(type) {
 
     if (type == "futurama") {
         ccLogo.setAttribute("src", `cc-${type}.png`)
-        ccLogo.setAttribute("class", "futurama-logo") 
+        ccLogo.setAttribute("class", "futurama-logo")
         background.style.backgroundImage = "url('futuramaBg.png')";
         background.style.borderRadius = "6%"
-    } else
-    {
-        ccLogo.setAttribute("src", `cc-${type}.svg`)   
+    } else {
+        ccLogo.setAttribute("src", `cc-${type}.svg`)
         background.style.backgroundImage = "url('cc-bg.svg')";
     }
-   
+
 }
 
 setCardType("default")
@@ -94,7 +93,13 @@ const cardNumberMasked = IMask(cardNumber, cardNumberPattern)
 
 const addButton = document.getElementById('add-card');
 addButton.addEventListener('click', () => {
-    alert('Cartao adicionado!')
+    Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Cartão de crédito adicionado!',
+        showConfirmButton: false,
+        timer: 1500
+    })
 })
 
 document.querySelector('form').addEventListener('submit', (event) => {
