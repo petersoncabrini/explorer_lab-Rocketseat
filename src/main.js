@@ -97,6 +97,8 @@ addButton.addEventListener('click', () => {
         position: 'top-end',
         icon: 'success',
         title: 'Cartão de crédito adicionado!',
+        background: "#202024",
+        color: "white",
         showConfirmButton: false,
         timer: 1500
     })
