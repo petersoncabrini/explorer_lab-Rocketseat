@@ -5,6 +5,11 @@ const ccBgColor01 = document.querySelector(".cc-bg svg > g g:nth-child(1) path")
 const ccBgColor02 = document.querySelector(".cc-bg svg > g g:nth-child(2) path");
 const ccLogo = document.querySelector(".cc-logo span:nth-child(2) img");
 const background = document.getElementById("cc");
+const ccNumber = document.getElementById("card-number");
+const ccholder = document.getElementById("card-holder");
+const ccExpiration = document.getElementById("expiration-date");
+const ccSecurity = document.getElementById("security-code");
+let inputs = [ccNumber, ccholder, ccExpiration, ccSecurity]
 
 function setCardType(type) {
 
@@ -93,15 +98,7 @@ const cardNumberMasked = IMask(cardNumber, cardNumberPattern)
 
 const addButton = document.getElementById('add-card');
 addButton.addEventListener('click', () => {
-    Swal.fire({
-        position: 'top-end',
-        icon: 'success',
-        title: 'Cartão de crédito adicionado!',
-        background: "#202024",
-        color: "white",
-        showConfirmButton: false,
-        timer: 1500
-    })
+    validateForm();
 })
 
 document.querySelector('form').addEventListener('submit', (event) => {
@@ -142,3 +139,41 @@ function updateExpirationDate(date) {
     const ccExpiration = document.querySelector('.cc-expiration .value')
     ccExpiration.innerText = date.length === 0 ? "02/32" : date
 }
+
+function validateForm() {
+
+    //add invalid class
+    for (let i = 0; i < inputs.length; i++) {
+        if (inputs[i].value == "") {
+            inputs[i].classList.add("invalid")
+        }
+    }
+
+    const invalidInputs = document.getElementsByClassName("invalid")
+    if (invalidInputs.length == 0) {
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            background: "#202024",
+            color: "white",
+            title: 'Cartão adicionado com sucesso!',
+            showConfirmButton: false,
+            timer: 1500
+        })
+
+        for (let i = 0; i < inputs.length; i++) {
+            inputs[i].value = "";
+        }
+    }
+
+}
+
+function removeInvalid() {
+    for (let i = 0; i < inputs.length; i++) {
+        inputs[i].onchange = () => {
+            inputs[i].classList.remove("invalid")
+        }
+    }
+}
+
+removeInvalid();
